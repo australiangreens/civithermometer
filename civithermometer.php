@@ -46,14 +46,14 @@ function civithermometer_civicrm_enable() {
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_navigationMenu
  */
 function civithermometer_civicrm_navigationMenu(&$menu) {
-  _civithermometer_civix_insert_navigation_menu($menu, 'Administer/CiviContribute', array(
+  _civithermometer_civix_insert_navigation_menu($menu, 'Administer/CiviContribute', [
     'label' => E::ts('CiviThermometer Settings'),
     'name' => 'civithermometer_settings',
     'url' => 'civicrm/admin/thermometer',
     'permission' => 'administer CiviCRM',
     'operator' => 'OR',
     'separator' => 0,
-  ));
+  ]);
   _civithermometer_civix_navigationMenu($menu);
 }
 
@@ -62,13 +62,13 @@ function civithermometer_civicrm_tabset($tabsetName, &$tabs, $context) {
   if ($tabsetName == 'civicrm/admin/contribute') {
     if (!empty($context['contribution_page_id'])) {
       $contribID = $context['contribution_page_id'];
-      $tab['thermometer'] = array(
+      $tab['thermometer'] = [
         'title' => ts('Thermometer'),
         'link' => NULL,
         'valid' => 1,
         'active' => 1,
         'current' => false,
-      );
+      ];
       // Insert this tab into position 2
       $tabs = array_merge(
         array_slice($tabs, 0, 2),
@@ -77,20 +77,20 @@ function civithermometer_civicrm_tabset($tabsetName, &$tabs, $context) {
        );
     }
     if (!empty($context['urlString']) && !empty($context['urlParams'])) {
-      $tabs[CRM_Core_Action::VIEW] = array(
+      $tabs[CRM_Core_Action::VIEW] = [
         'title' => ts('Thermometer'),
         'name' => ts('Thermometer'),
         'url' => $context['urlString'] . 'thermometer',
         'qs' => $context['urlParams'],
         'uniqueName' => 'thermometer',
-      );
+      ];
     }
   }
 }
 
 function civithermometer_civicrm_entityTypes(&$entityTypes) {
   $entityTypes['CRM_Contribute_DAO_ContributionPage']['fields_callback'][] = function($class, &$fields) {
-    $fields['thermometer_is_enabled'] = array(
+    $fields['thermometer_is_enabled'] = [
       'name' => 'thermometer_is_enabled',
       'title' => E::ts('Add thermometer to the page'),
       'type' => CRM_Utils_Type::T_BOOLEAN,
@@ -100,8 +100,8 @@ function civithermometer_civicrm_entityTypes(&$entityTypes) {
       'html' => array(
         'type' => 'CheckBox',
       ),
-    );
-    $fields['thermometer_is_double'] = array(
+    ];
+    $fields['thermometer_is_double'] = [
       'name' => 'thermometer_is_double',
       'title' => E::ts('Is this a double your donation thermometer? (optional)'),
       'type' => CRM_Utils_Type::T_BOOLEAN,
@@ -111,8 +111,8 @@ function civithermometer_civicrm_entityTypes(&$entityTypes) {
       'html' => array(
         'type' => 'CheckBox',
       ),
-    );
-    $fields['thermometer_stretch_goal'] = array(
+    ];
+    $fields['thermometer_stretch_goal'] = [
       'name' => 'thermometer_stretch_goal',
       'title' => E::ts('Stretch goal if goal amount is reached? (optional)'),
       'type' => CRM_Utils_Type::T_MONEY,
@@ -122,8 +122,8 @@ function civithermometer_civicrm_entityTypes(&$entityTypes) {
       'html' => array(
         'type' => 'Text',
       ),
-    );
-    $fields['thermometer_offset_amount'] = array(
+    ];
+    $fields['thermometer_offset_amount'] = [
       'name' => 'thermometer_offset_amount',
       'title' => E::ts('Adjust existing contribution total? (optional; use negative numbers to subtract)'),
       'type' => CRM_Utils_Type::T_MONEY,
@@ -133,8 +133,8 @@ function civithermometer_civicrm_entityTypes(&$entityTypes) {
       'html' => array(
         'type' => 'Text',
       ),
-    );
-    $fields['thermometer_offset_donors'] = array(
+    ];
+    $fields['thermometer_offset_donors'] = [
       'name' => 'thermometer_offset_donors',
       'title' => E::ts('Adjust existing number of contributors? (optional; use negative numbers to subtract)'),
       'type' => CRM_Utils_Type::T_INT,
@@ -144,7 +144,7 @@ function civithermometer_civicrm_entityTypes(&$entityTypes) {
       'html' => array(
         'type' => 'Text',
       ),
-    );
+    ];
   };
 }
 
@@ -207,14 +207,14 @@ function civithermometer_civicrm_buildForm($formName, &$form) {
       $html = $thermo_settings[1]['value'];
 
       // Add thermo data to the page so our JS can access it
-      CRM_Core_Resources::singleton()->addVars('civithermo', array(
+      CRM_Core_Resources::singleton()->addVars('civithermo', [
         'numberDonors' => $numberDonors,
         'amountGoal' => $amountGoal,
         'amountStretch' => $amountStretch,
         'amountRaised' => $amountRaised,
         'currency' => $form->_values['currency'],
         'isDouble' => $isDouble,
-      ));
+      ]);
 
       if (empty($form->_pcpInfo['id']) && !empty($form->_values['intro_text'])) {
         $intro_text = $form->_values['intro_text'];
