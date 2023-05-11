@@ -3,6 +3,6 @@
      "type": "civicrm-ext",
      "description": "CiviCRM civithermometer extension",
      "require": {
-       "composer/installers": "^1.6 || ^2",
+       "composer/installers": "^1.6 || ^2"
      }
 }
