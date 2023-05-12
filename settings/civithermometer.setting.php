@@ -28,8 +28,8 @@
 /*
  * Settings metadata file
  */
-return array(
-  'civithermometer_html' => array(
+return [
+  'civithermometer_html' => [
     'group_name' => 'civithermometer',
     'group' => 'civithermometer',
     'name' => 'civithermometer_html',
@@ -42,13 +42,13 @@ return array(
     'title' => 'Thermometer HTML',
     'default' => '',
     'html_type' => 'TextArea',
-    'html_attributes' => array(
+    'html_attributes' => [
       'cols' => 80,
       'rows' => 20,
-    ),
+    ],
     'quick_form_type' => 'Element',
-  ),
-  'civithermometer_css' => array(
+  ],
+  'civithermometer_css' => [
     'group_name' => 'civithermometer',
     'group' => 'civithermometer',
     'name' => 'civithermometer_css',
@@ -60,11 +60,11 @@ return array(
     'description' => 'CSS used to style thermometer HTML elements',
     'title' => 'Thermometer CSS',
     'html_type' => 'TextArea',
-    'html_attributes' => array(
+    'html_attributes' => [
       'cols' => 80,
       'rows' => 20,
-    ),
+    ],
     'quick_form_type' => 'Element',
-  ),
-);
+  ],
+];
 

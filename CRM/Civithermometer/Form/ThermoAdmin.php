@@ -8,9 +8,9 @@ use CRM_Civithermometer_ExtensionUtil as E;
  * @see https://docs.civicrm.org/dev/en/latest/framework/quickform/
  */
 class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
-  private $_settingFilter = array('group' => 'civithermometer');
-  private $_submittedValues = array();
-  private $_settings = array();
+  private $_settingFilter = ['group' => 'civithermometer'];
+  private $_submittedValues = [];
+  private $_settings = [];
 
   public function buildQuickForm() {
     $settings = $this->getFormSettings();
@@ -18,7 +18,7 @@ class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
 			if (isset($setting['quick_form_type'])) {
 				$options = NULL;
 				if (isset($setting['pseudoconstant'])) {
-					$options = civicrm_api3('Setting', 'getoptions', array('field' => $name));
+					$options = civicrm_api3('Setting', 'getoptions', ['field' => $name]);
 			  }
 				$add = 'add' . $setting['quick_form_type'];
 				if ($add == 'addElement') {
@@ -37,13 +37,13 @@ class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
 			}
 		}
 
-		$this->addButtons(array(
-			array(
+		$this->addButtons([
+			[
 				'type' => 'submit',
 				'name' => ts('Submit'),
 				'isDefault' => TRUE,
-			)
-		));
+			]
+		]);
 
     // export form elements
     $this->assign('elementNames', $this->getRenderableElementNames());
@@ -66,7 +66,7 @@ class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
     // auto-rendered in the loop -- such as "qfKey" and "buttons".  These
     // items don't have labels.  We'll identify renderable by filtering on
     // the 'label'.
-    $elementNames = array();
+    $elementNames = [];
     foreach ($this->_elements as $element) {
       /** @var HTML_QuickForm_Element $element */
       $label = $element->getLabel();
@@ -84,7 +84,7 @@ class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
 	 */
 	public function getFormSettings() {
 		if (empty($this->_settings)) {
-			$settings = civicrm_api3('setting', 'getfields', array('filters' => $this->_settingFilter));
+			$settings = civicrm_api3('setting', 'getfields', ['filters' => $this->_settingFilter]);
 		}
 		return $settings['values'];
 	}
@@ -107,8 +107,8 @@ class CRM_Civithermometer_Form_ThermoAdmin extends CRM_Core_Form {
 	 * @see CRM_Core_Form::setDefaultValues()
 	 */
 	public function setDefaultvalues() {
-		$existing = civicrm_api3('setting', 'get', array('return' => array_keys($this->getFormSettings())));
-		$defaults = array();
+		$existing = civicrm_api3('setting', 'get', ['return' => array_keys($this->getFormSettings())]);
+		$defaults = [];
 		$domainID = CRM_Core_Config::domainID();
 		foreach ($existing['values'][$domainID] as $name => $value) {
 			$defaults[$name] = $value;
