@@ -26,13 +26,13 @@ class CRM_Civithermometer_Form_Thermometer extends CRM_Contribute_Form_Contribut
     $this->addField('thermometer_offset_amount');
     $this->addField('thermometer_offset_donors');
 
-    $this->addButtons(array(
-      array(
+    $this->addButtons([
+      [
         'type' => 'submit',
         'name' => E::ts('Save'),
         'isDefault' => TRUE,
-      ),
-    ));
+      ],
+    ]);
 
     $this->assign('elementNames', $this->getRenderableElementNames());
     parent::buildQuickForm();
@@ -97,7 +97,7 @@ class CRM_Civithermometer_Form_Thermometer extends CRM_Contribute_Form_Contribut
     // auto-rendered in the loop -- such as "qfKey" and "buttons".  These
     // items don't have labels.  We'll identify renderable by filtering on
     // the 'label'.
-    $elementNames = array();
+    $elementNames = [];
     foreach ($this->_elements as $element) {
       /** @var HTML_QuickForm_Element $element */
       $label = $element->getLabel();

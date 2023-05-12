@@ -14,14 +14,25 @@
     <url desc="Support">https://github.com/australiangreens/civithermometer</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
-  <releaseDate>2019-12-03</releaseDate>
-  <version>0.3.0</version>
+  <releaseDate>2023-05-11</releaseDate>
+  <version>0.4.0</version>
   <develStage>beta</develStage>
   <compatibility>
-    <ver>5.19</ver>
+    <ver>5.57</ver>
   </compatibility>
   <comments>This extension is in beta. We consider it stable enough for production use but bugs and other issues are likely. Use at your own risk.</comments>
   <civix>
     <namespace>CRM/Civithermometer</namespace>
+    <format>23.02.1</format>
   </civix>
+  <mixins>
+    <mixin>menu-xml@1.0.0</mixin>
+    <mixin>setting-php@1.0.0</mixin>
+    <mixin>smarty-v2@1.0.1</mixin>
+  </mixins>
+  <classloader>
+    <psr0 prefix="CRM_" path="."/>
+    <psr4 prefix="Civi\" path="Civi"/>
+  </classloader>
+  <upgrader>CRM_Civithermometer_Upgrader</upgrader>
 </extension>
