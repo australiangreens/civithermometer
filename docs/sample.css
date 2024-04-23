@@ -1,17 +1,17 @@
-#civithermo_target {
+.civithermo_target {
   font-weight: bold;
   color: rgb(239,129,60);
   margin-bottom: 10px;
 }
 
-#civithermo_meter {
+.civithermo_meter {
   padding: 25px 0;
   width: 100%;
   background: rgb(237,237,237);
   text-align: center;
 }
 
-#civithermo_glass {
+.civithermo_glass {
 border-style: solid;
 border-color: rgb(58,181,75);
 border-radius: 100px;
@@ -21,21 +21,21 @@ margin: auto;
 padding: 0px;
 position: relative;
 width: 50px;
-margin-bottom: 30px; 
+margin-bottom: 30px;
 box-sizing: content-box !important;
 -webkit-box-sizing: content-box !important;
 line-height: 24px !important;
 overflow: hidden;
 }
 
-#civithermo_glass:after {
+.civithermo_glass:after {
 content: '';
 position: absolute;
 top: 10%;
 bottom: 10%;
 left: 10%;
 right: 10%;
-background: 
+background:
 linear-gradient(
   to bottom,
   rgb(58,181,75) 0%,
@@ -45,7 +45,7 @@ linear-gradient(
 background-size: 100% 13px;
 }
 
-#civithermo_amount {
+.civithermo_amount {
   background: rgb(0,150,67);
   border-radius: 0px 0px 100px 100px;
   display: block;
@@ -57,6 +57,6 @@ background-size: 100% 13px;
   line-height: 24px !important;
 }
 
-#civithermo_target, #civithermo_total, #civithermo_donors, #civithermo_raised {
+.civithermo_target, .civithermo_total, .civithermo_donors, .civithermo_raised {
   margin-top: 0;
 }

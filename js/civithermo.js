@@ -8,12 +8,11 @@ function civithermo_render() {
   const isDouble = parseInt(CRM.vars.civithermo.isDouble);
 
   // Declare thermometer elements
-  let thermo_target = document.getElementById('civithermo_target');
-  let thermo_total = document.getElementById('civithermo_total');
-  let thermo_amount = document.getElementById('civithermo_amount');
-  let thermo_donors = document.getElementById('civithermo_donors');
-  let thermo_raised = document.getElementById('civithermo_raised');
-
+  let thermo_target = document.getElementsByClassName('civithermo_target')[0];
+  let thermo_total = document.getElementsByClassName('civithermo_total')[0];
+  let thermo_amount = document.getElementsByClassName('civithermo_amount')[0];
+  let thermo_donors = document.getElementsByClassName('civithermo_donors')[0];
+  let thermo_raised = document.getElementsByClassName('civithermo_raised')[0];
   let thermo_percent = Math.floor((raised / goal) * 100);
 
   // Get browser locale
