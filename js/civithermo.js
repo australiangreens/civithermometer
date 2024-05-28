@@ -5,7 +5,7 @@ function civithermo_render() {
   const raised = parseInt(CRM.vars.civithermo.amountRaised);
   const currency = CRM.vars.civithermo.currency;
   const donors = CRM.vars.civithermo.numberDonors;
-  const isDouble = parseInt(CRM.vars.civithermo.isDouble);
+  const isDouble = CRM.vars.civithermo.isDouble;
 
   // Declare thermometer elements
   let thermo_target = document.getElementsByClassName('civithermo_target')[0];
