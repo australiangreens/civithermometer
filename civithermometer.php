@@ -89,7 +89,7 @@ function civithermometer_civicrm_tabset($tabsetName, &$tabs, $context) {
 }
 
 function civithermometer_civicrm_entityTypes(&$entityTypes) {
-  $entityTypes['CRM_Contribute_DAO_ContributionPage']['fields_callback'][] = function($class, &$fields) {
+  $entityTypes['ContributionPage']['fields_callback'][] = function($class, &$fields) {
     $fields['thermometer_is_enabled'] = [
       'name' => 'thermometer_is_enabled',
       'title' => E::ts('Add thermometer to the page'),
