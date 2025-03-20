@@ -37,6 +37,7 @@ function civithermo_render() {
     thermo_total.innerHTML = raised.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0})
       + ' DONATED MEANS <br />'
       + (2 * raised).toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0}) + ' SO FAR';
+    thermo_percent = thermo_percent * 2;
   } else {
     thermo_total.innerHTML = raised.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0}) + ' SO FAR';
   }
