@@ -6,6 +6,7 @@ function civithermo_render() {
   const currency = CRM.vars.civithermo.currency;
   const donors = CRM.vars.civithermo.numberDonors;
   const isDouble = CRM.vars.civithermo.isDouble;
+  const raisedCalculated = (isDouble ? raised * 2 : raised);
 
   // Declare thermometer elements
   let thermo_target = document.getElementsByClassName('civithermo_target')[0];
@@ -13,7 +14,7 @@ function civithermo_render() {
   let thermo_amount = document.getElementsByClassName('civithermo_amount')[0];
   let thermo_donors = document.getElementsByClassName('civithermo_donors')[0];
   let thermo_raised = document.getElementsByClassName('civithermo_raised')[0];
-  let thermo_percent = Math.floor((raised / goal) * 100);
+  let thermo_percent = Math.floor((raisedCalculated / goal) * 100);
 
   // Get browser locale
   const locale = navigator.language;
@@ -23,12 +24,12 @@ function civithermo_render() {
 
   // Manipulate thermometer elements
 
-  if (!isNaN(stretch) && raised >= goal) {
+  if (!isNaN(stretch) && raisedCalculated >= goal) {
     thermo_target.innerHTML = 'TARGET <span style="text-decoration: line-through">'
       + goal.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0})
       + '</span> '
       + stretch.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0});
-    thermo_percent = Math.floor((raised / stretch) * 100);
+    thermo_percent = Math.floor((raisedCalculated / stretch) * 100);
   } else {
     thermo_target.innerHTML = 'TARGET ' + goal.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0});
   }
@@ -36,8 +37,7 @@ function civithermo_render() {
   if (isDouble) {
     thermo_total.innerHTML = raised.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0})
       + ' DONATED MEANS <br />'
-      + (2 * raised).toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0}) + ' SO FAR';
-    thermo_percent = thermo_percent * 2;
+      + (raisedCalculated).toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0}) + ' SO FAR';
   } else {
     thermo_total.innerHTML = raised.toLocaleString(locale, {style: 'currency', currency: currency, minimumFractionDigits: 0}) + ' SO FAR';
   }
